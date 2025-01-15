@@ -11,7 +11,7 @@ ADMIN = 'admin'
 MODERATOR = 'moderator'
 USER = 'user'
 
-CHOISES = (
+CHOICES = (
     (ADMIN, 'Администратор'),
     (MODERATOR, 'Модератор'),
     (USER, 'Пользователь'),
