@@ -4,33 +4,14 @@ from django.db import models
 
 from api_yamdb.constants import (
     MAX_LENGTH_NAME,
-    MAX_LENGTH_SLUG,
     SHORT_TEXT_LENGTH,
     MIN_SCORE_VALUE,
     MAX_SCORE_VALUE
 )
+from .base import BaseModel
 from .validators import validate_year
 
 User = get_user_model()
-
-
-class BaseModel(models.Model):
-    name = models.CharField(
-        max_length=MAX_LENGTH_NAME,
-        verbose_name='Название',
-        unique=True
-    )
-    slug = models.SlugField(
-        max_length=MAX_LENGTH_SLUG,
-        verbose_name='Идентификатор'
-    )
-
-    class Meta:
-        abstract = True
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
 
 
 class Category(BaseModel):
