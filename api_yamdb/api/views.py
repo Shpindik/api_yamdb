@@ -38,6 +38,9 @@ class GenreViewSet(ListCreateDeleteViewSet):
 class TitleViewSet(viewsets.ModelViewSet):
     """Работа с произведениями."""
 
+    queryset = Title.objects.annotate(
+        rating=Avg('reviews__score')
+    ).order_by('name')
     serializer_class = TitleReadSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_class = FilterTitle
@@ -51,11 +54,6 @@ class TitleViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
             return TitleReadSerializer
         return TitleWriteSerializer
-
-    def get_queryset(self):
-        return Title.objects.annotate(
-            rating=Avg('reviews__score')
-        ).order_by('name')
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

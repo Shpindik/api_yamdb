@@ -1,14 +1,9 @@
 from django.contrib import admin
 
 from api_yamdb.constants import EMPTY_VALUE
-from .models import Category, Genre, Title, Review, Comment, TitleGenre
+from .models import Category, Genre, Title, Review, Comment
 
 admin.site.empty_value_display = EMPTY_VALUE
-
-
-class TitleGenreInline(admin.TabularInline):
-    model = TitleGenre
-    extra = 1
 
 
 @admin.register(Category)
@@ -20,7 +15,6 @@ class GenreCategoryAdmin(admin.ModelAdmin):
 @admin.register(Title)
 class TitleAdmin(admin.ModelAdmin):
     list_display = ['name', 'year', 'get_genre', 'category', 'description']
-    inlines = [TitleGenreInline]
     list_editable = ['category']
     fields = ['name', 'year', 'category', 'description']
 

@@ -8,22 +8,22 @@ from api_yamdb.constants import (
     MIN_SCORE_VALUE,
     MAX_SCORE_VALUE
 )
-from .base import BaseModel
+from .base import CategoryGenreBaseModel
 from .validators import validate_year
 
 User = get_user_model()
 
 
-class Category(BaseModel):
+class Category(CategoryGenreBaseModel):
 
-    class Meta(BaseModel.Meta):
+    class Meta(CategoryGenreBaseModel.Meta):
         verbose_name = 'Категория',
         verbose_name_plural = 'Категории'
 
 
-class Genre(BaseModel):
+class Genre(CategoryGenreBaseModel):
 
-    class Meta(BaseModel.Meta):
+    class Meta(CategoryGenreBaseModel.Meta):
         verbose_name = 'Жанр',
         verbose_name_plural = 'Жанры'
 
@@ -86,28 +86,6 @@ class Title(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class TitleGenre(models.Model):
-    title = models.ForeignKey(
-        Title,
-        on_delete=models.CASCADE,
-        related_name='titles',
-        verbose_name='Произведение'
-    )
-    genre = models.ForeignKey(
-        Genre,
-        on_delete=models.CASCADE,
-        related_name='genre',
-        verbose_name='Жанр'
-    )
-
-    class Meta:
-        verbose_name = 'Произведение - Жанр'
-        verbose_name_plural = 'Произведения - Жанры'
-
-    def __str__(self):
-        return f'{self.title} - {self.genre}'
 
 
 class Review(CommentReviewModel):
