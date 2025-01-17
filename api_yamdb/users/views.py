@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 from api.permissions import IsAdmin
 from users.models import User
-from users.serializers import (
+from api.serializers import (
     UserAccessTokenSerializer,
     UserCreationSerializer,
     UserSerializer
