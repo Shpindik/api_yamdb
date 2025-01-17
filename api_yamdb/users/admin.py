@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import Group
 
 from api_yamdb.constants import EMPTY_VALUE
 from users.models import User
 
 
 admin.site.empty_value_display = EMPTY_VALUE
+admin.site.unregister(Group)
 
 
 @admin.register(User)

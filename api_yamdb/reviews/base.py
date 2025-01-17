@@ -3,7 +3,7 @@ from django.db import models
 from api_yamdb.constants import MAX_LENGTH_NAME, MAX_LENGTH_SLUG
 
 
-class BaseModel(models.Model):
+class CategoryGenreBaseModel(models.Model):
     name = models.CharField(
         max_length=MAX_LENGTH_NAME,
         verbose_name='Название',
