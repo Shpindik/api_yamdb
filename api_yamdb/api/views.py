@@ -20,9 +20,9 @@ from api.serializers import (
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
 
-from .filters import FilterTitle
-from .permissions import IsAdminModeratorAuthorOrReadOnly, IsAdminOrReadOnly
-from .serializers import (
+from api.filters import FilterTitle
+from api.permissions import IsAdminModeratorAuthorOrReadOnly, IsAdminOrReadOnly
+from api.serializers import (
     CategorySerializer,
     CommentSerializer,
     GenreSerializer,
@@ -30,7 +30,7 @@ from .serializers import (
     TitleReadSerializer,
     TitleWriteSerializer
 )
-from .viewset import ListCreateDeleteViewSet
+from api.viewset import ListCreateDeleteViewSet
 
 
 class CategoryViewSet(ListCreateDeleteViewSet):
