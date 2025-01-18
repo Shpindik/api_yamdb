@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from api_yamdb.constants import EMPTY_VALUE
-from .models import Category, Genre, Title, Review, Comment
+
+from reviews.models import Category, Comment, Genre, Review, Title
 
 admin.site.empty_value_display = EMPTY_VALUE
 

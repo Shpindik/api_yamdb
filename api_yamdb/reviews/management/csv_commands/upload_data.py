@@ -7,7 +7,6 @@ from reviews.management.csv_commands.upload import (
 )
 from reviews.models import Category, Comment, Genre, Review, Title, TitleGenre
 
-
 User = get_user_model()
 
 

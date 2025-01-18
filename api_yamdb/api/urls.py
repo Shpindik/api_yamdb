@@ -6,7 +6,10 @@ from api.views import (
     CommentViewSet,
     GenreViewSet,
     ReviewViewSet,
-    TitleViewSet
+    TitleViewSet,
+    UserViewSet,
+    get_token,
+    signup
 )
 
 router_v1 = DefaultRouter()
@@ -28,12 +31,29 @@ router_v1.register(
 router_v1.register(
     r'titles/(?P<title_id>\d+)/reviews',
     ReviewViewSet,
-    basename='reviews')
+    basename='reviews'
+)
 router_v1.register(
     r'titles/(?P<title_id>\d+)/reviews/(?P<review_id>\d+)/comments',
     CommentViewSet,
-    basename='comments')
+    basename='comments'
+)
+router_v1.register(
+    'users',
+    UserViewSet,
+    basename='users'
+)
+
+auth_urls = [
+    path('token/', get_token, name='token'),
+    path('signup/', signup, name='signup'),
+]
+
+pattern_list = [
+    path('auth/', include(auth_urls)),
+    path('', include(router_v1.urls)),
+]
 
 urlpatterns = [
-    path('v1/', include(router_v1.urls)),
+    path('v1/', include(pattern_list)),
 ]

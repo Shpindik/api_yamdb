@@ -5,7 +5,6 @@ from django.contrib.auth.models import Group
 from api_yamdb.constants import EMPTY_VALUE
 from users.models import User
 
-
 admin.site.empty_value_display = EMPTY_VALUE
 admin.site.unregister(Group)
 
