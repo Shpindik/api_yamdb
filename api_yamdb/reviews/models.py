@@ -1,15 +1,16 @@
 from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from api_yamdb.constants import (
     MAX_LENGTH_NAME,
-    SHORT_TEXT_LENGTH,
+    MAX_SCORE_VALUE,
     MIN_SCORE_VALUE,
-    MAX_SCORE_VALUE
+    SHORT_TEXT_LENGTH
 )
-from .base import CategoryGenreBaseModel
-from .validators import validate_year
+
+from reviews.base import CategoryGenreBaseModel
+from reviews.validators import validate_year
 
 User = get_user_model()
 

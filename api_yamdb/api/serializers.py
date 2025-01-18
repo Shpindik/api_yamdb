@@ -1,4 +1,3 @@
-from django.forms import ValidationError
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.validators import UnicodeUsernameValidator
@@ -7,14 +6,14 @@ from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
-from reviews.models import Category, Comment, Genre, Review, Title
 from api_yamdb.constants import (
     BAD_USERNAME,
+    MAX_EMAIL_LENGTH,
     MAX_SCORE_VALUE,
     MAX_USERNAME_LENGTH,
-    MAX_EMAIL_LENGTH,
     MIN_SCORE_VALUE
 )
+from reviews.models import Category, Comment, Genre, Review, Title
 from users.models import User
 from users.validators import validate_username
 
